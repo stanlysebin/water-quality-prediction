@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Potability Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💧 Water Potability Predictor</h1>
+            <p>Enter water quality parameters to check if water is safe to drink</p>
+        </header>
+
+        <div class="content">
+            <form id="predictionForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="ph">pH Level</label>
+                        <input type="number" id="ph" name="ph" step="0.01" placeholder="e.g., 7.0" required>
+                        <small>Normal range: 6.5 - 8.5</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Hardness">Hardness (mg/L)</label>
+                        <input type="number" id="Hardness" name="Hardness" step="0.01" placeholder="e.g., 200" required>
+                        <small>Calcium & magnesium content</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Solids">Total Dissolved Solids (ppm)</label>
+                        <input type="number" id="Solids" name="Solids" step="0.01" placeholder="e.g., 20000" required>
+                        <small>Minerals, salts, metals</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Chloramines">Chloramines (ppm)</label>
+                        <input type="number" id="Chloramines" name="Chloramines" step="0.01" placeholder="e.g., 7.0" required>
+                        <small>Disinfectant compound</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Sulfate">Sulfate (mg/L)</label>
+                        <input type="number" id="Sulfate" name="Sulfate" step="0.01" placeholder="e.g., 333" required>
+                        <small>Naturally occurring substances</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Conductivity">Conductivity (μS/cm)</label>
+                        <input type="number" id="Conductivity" name="Conductivity" step="0.01" placeholder="e.g., 400" required>
+                        <small>Electrical conductivity</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Organic_carbon">Organic Carbon (ppm)</label>
+                        <input type="number" id="Organic_carbon" name="Organic_carbon" step="0.01" placeholder="e.g., 15" required>
+                        <small>Total organic carbon</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Trihalomethanes">Trihalomethanes (μg/L)</label>
+                        <input type="number" id="Trihalomethanes" name="Trihalomethanes" step="0.01" placeholder="e.g., 66" required>
+                        <small>Disinfection byproducts</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Turbidity">Turbidity (NTU)</label>
+                        <input type="number" id="Turbidity" name="Turbidity" step="0.01" placeholder="e.g., 3.5" required>
+                        <small>Water clarity measure</small>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-predict">
+                    <span id="btnText">Predict Potability</span>
+                    <span id="btnLoader" class="loader" style="display: none;"></span>
+                </button>
+            </form>
+
+            <div id="result" class="result" style="display: none;">
+                <div class="result-content">
+                    <div class="result-icon" id="resultIcon"></div>
+                    <h2 id="resultText"></h2>
+                    <p id="confidenceText"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
